@@ -379,31 +379,38 @@ target_link_libraries(app pthread calc)
 
 语法：
 
+```cmake
 install(TARGETS <target>... [...])
 install({FILES | PROGRAMS} <file>... [...])
 install(DIRECTORY <dir>... [...])
 install(SCRIPT <file> [...])
 install(CODE <code> [...])
 install(EXPORT <export-name> [...])
+```
+
 该命令是为项目配置安装规则。在项目中会按照install()命令调用的顺序执行按照规则。
 
 首先解释几个选项：
 
-DESTINATION：指定要安装到的目录，如果是相对路径，则是相对于CMAKE_INSTALL_PREFIX变量的，如果是绝对路径，则直接使用，由于cpack的安装程序生成器不支持绝对路径，所有最好使用相对路径。
-PERMISSIONS: 指定安装文件的权限，有效权限有OWNER_READ，OWNER_WRITE，OWNER_EXECUTE，GROUP_READ，GROUP_WRITE，GROUP_EXECUTE，WORLD_READ，WORLD_WRITE，WORLD_EXECUTE，SETUID和SETGID。在某些平台上没有意义的权限将被忽略。
-CONFIGURATIONS: 指定安装规则适用的构建配置(Debug, Relase等)，如果要为Debug和Relase单独配置安装路径，如下：
+* DESTINATION：指定要安装到的目录，如果是相对路径，则是相对于CMAKE_INSTALL_PREFIX变量的，如果是绝对路径，则直接使用，由于cpack的安装程序生成器不支持绝对路径，所有最好使用相对路径。
+* PERMISSIONS: 指定安装文件的权限，有效权限有OWNER_READ，OWNER_WRITE，OWNER_EXECUTE，GROUP_READ，GROUP_WRITE，GROUP_EXECUTE，WORLD_READ，WORLD_WRITE，WORLD_EXECUTE，SETUID和SETGID。在某些平台上没有意义的权限将被忽略。
+* CONFIGURATIONS: 指定安装规则适用的构建配置(Debug, Relase等)，如果要为Debug和Relase单独配置安装路径，如下：
+
+```cmake
 install(TARGETS target
         CONFIGURATIONS Debug
         RUNTIME DESTINATION Debug/bin)
 install(TARGETS target
         CONFIGURATIONS Release
         RUNTIME DESTINATION Release/bin)
+```
 
 EXCLUDE_FROM_ALL: 指定该文件从完整安装中排除。
 RENAME: 指定已安装文件的名称，该名称可能与原始文件不同。仅当命令安装了单个文件时，才允许重命名.
 安装二进制文件
 语法：
 
+```cmake
 install(TARGETS targets... [EXPORT <export-name>]
         [[ARCHIVE|LIBRARY|RUNTIME|OBJECTS|FRAMEWORK|BUNDLE|
           PRIVATE_HEADER|PUBLIC_HEADER|RESOURCE]
@@ -417,6 +424,7 @@ install(TARGETS targets... [EXPORT <export-name>]
         ] [...]
         [INCLUDES DESTINATION [<dir> ...]]
         )
+```
 
 常用参数：
 
@@ -434,6 +442,7 @@ PUBLIC_HEADER	${CMAKE_INSTALL_INCLUDEDIR}	include
 安装文件和目录
 语法：
 
+```cmake
 install(<FILES|PROGRAMS> files...
         TYPE <type> | DESTINATION <dir>
         [PERMISSIONS permissions...]
