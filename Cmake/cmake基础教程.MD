@@ -433,8 +433,8 @@ LIBRARY: 动态库
 RUNTIME: 可执行文件
 如果没有指定下列目录的路径，则使用内置的默认值：
 
-Target	| Variable |	Built-In | Default
------------------------------------------
+Target	| Variable |	Built-In Default
+--- | --- | --- | ---
 RUNTIME	| 	${CMAKE_INSTALL_BINDIR}	       | bin
 LIBRARY	|      ${CMAKE_INSTALL_LIBDIR}		| lib
 ARCHIVE	|      ${CMAKE_INSTALL_LIBDIR}		| lib
