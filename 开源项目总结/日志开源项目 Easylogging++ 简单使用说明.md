@@ -10,7 +10,7 @@
 
 INITIALIZE_EASYLOGGINGPP
 ```
-三、案例
+## 三、案例
 ```cpp
 #include <iostream>
 #include "easylogging++.h"
@@ -38,8 +38,11 @@ int main() {
 ```
 解析：
 在用户的 HOME 目录下的 /zone3/ES_log/ 路径中创建一个名为esm_%datetime{%Y-%M-%d_%H:%m:%s}.log的日志文件；
+
 日志的格式被设置为 %datetime{%Y-%M-%d %H:%m:%s} %level %msg，每条日志都将包含日期时间、日志级别和日志消息。
+
 conf.setGlobally(el::ConfigurationType::ToStandardOutput, "false");，取消终端打印；
+
 LOG(INFO) << "header braking";将记录一条信息级别的日志，日志的内容是 2023-12-04 23:30:44 INFO header braking。
 ## 四、使用介绍
 ### 1. 日志级别
